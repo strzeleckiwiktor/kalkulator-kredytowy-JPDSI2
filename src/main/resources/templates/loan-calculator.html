@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Loan calculator </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+    <h1>Kalkulator kredytowy</h1>
+
+    <form action="#" th:action="@{/loan-calculator}" th:object="${loanCalculatorForm}" method="post">
+        <table>
+            <tr>
+                <td>Kwota:</td>
+                <td><input type="text" th:field="*{amount}" /></td>
+                <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Amount Error</td>
+            </tr>
+
+            <tr>
+                <td>Okres:</td>
+                <td><input type="text" th:field="*{term}" /></td>
+                <td th:if="${#fields.hasErrors('term')}" th:errors="*{term}">Term Error</td>
+            </tr>
+
+            <tr>
+                <td>Oprocentowanie:</td>
+                <td><input type="text" th:field="*{interest}" /></td>
+                <td th:if="${#fields.hasErrors('interest')}" th:errors="*{interest}">Interest Error</td>
+            </tr>
+
+            <tr>
+                <td><button type="submit">Oblicz</button></td>
+            </tr>
+        </table>
+
+        <h2><p th:if="${result != null}" th:text="'Rata miesięczna: ' + ${result}"></p></h2>
+    </form>
+
+</body>
+</html>
