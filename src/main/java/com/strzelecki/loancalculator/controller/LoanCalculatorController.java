@@ -11,19 +11,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @Controller
 public class LoanCalculatorController {
     @Autowired
     private LoanCalculatorService loanCalculatorService;
 
-    @GetMapping("/loan-calculator")
+    @GetMapping
     public String loanCalculatorShow(Model model) {
         model.addAttribute("loanCalculatorForm", new LoanCalculatorForm());
         return "loan-calculator";
     }
 
-    @PostMapping("/loan-calculator")
+    @GetMapping("/info")
+    public String showInfo() {
+        return "info";
+    }
+
+    @PostMapping
     public String loanCalculatorSubmit(@Valid @ModelAttribute("loanCalculatorForm") LoanCalculatorForm loanCalculatorForm, BindingResult bindingResult, Model model) {
 
         if (!bindingResult.hasErrors()) {

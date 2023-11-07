@@ -9,43 +9,45 @@
 </head>
 
 <body>
+    <header th:insert="fragments/header.html :: header"> </header>
+
     <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <div class="card-header">Kalkulator kredytowy</div>
-            <form action="#" th:action="@{/loan-calculator}" th:object="${loanCalculatorForm}" method="post">
+            <div class="card-body">
+                <div class="card-header">Kalkulator kredytowy</div>
+                <form action="#" th:action="@{/}" th:object="${loanCalculatorForm}" method="post">
 
-                <div class="mb-3">
-                    <label for="amount" class="form-label">Kwota:</label>
-                    <input type="text" th:field="*{amount}" class="form-control" id="amount">
-                    <div th:if="${#fields.hasErrors('amount')}" class="alert alert-danger" role="alert">
-                        <p th:errors="*{amount}"> Amount Error></p>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Kwota:</label>
+                        <input type="text" th:field="*{amount}" class="form-control" id="amount">
+                        <div th:if="${#fields.hasErrors('amount')}" class="alert alert-danger" role="alert">
+                            <p th:errors="*{amount}"> Amount Error></p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label for="term" class="form-label">Kwota:</label>
-                    <input type="text" th:field="*{term}" class="form-control" id="term">
-                    <div th:if="${#fields.hasErrors('term')}" class="alert alert-danger" role="alert">
-                        <p th:errors="*{term}">Term Error></p>
+                    <div class="mb-3">
+                        <label for="term" class="form-label">Okres:</label>
+                        <input type="text" th:field="*{term}" class="form-control" id="term">
+                        <div th:if="${#fields.hasErrors('term')}" class="alert alert-danger" role="alert">
+                            <p th:errors="*{term}">Term Error></p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label for="interest" class="form-label">Kwota:</label>
-                    <input type="text" th:field="*{interest}" class="form-control" id="interest">
-                    <div th:if="${#fields.hasErrors('interest')}" class="alert alert-danger" role="alert">
-                        <p th:errors="*{interest}">Interest Error></p>
+                    <div class="mb-3">
+                        <label for="interest" class="form-label">Oprocentowanie:</label>
+                        <input type="text" th:field="*{interest}" class="form-control" id="interest">
+                        <div th:if="${#fields.hasErrors('interest')}" class="alert alert-danger" role="alert">
+                            <p th:errors="*{interest}">Interest Error></p>
+                        </div>
                     </div>
-                </div>
 
-                <button type="submit" class="btn btn-primary">Oblicz</button>
+                    <button type="submit" class="btn btn-primary">Oblicz</button>
 
-                <div th:if="${result != null}" class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Miesięczna rata: </h4>
-                    <p th:text="${result}"></p>
-                </div>
-            </form>
+                    <div th:if="${result != null}" class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Miesięczna rata: </h4>
+                        <p th:text="${result}"></p>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 </body>
 </html>
